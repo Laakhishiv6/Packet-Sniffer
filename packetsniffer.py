@@ -2,11 +2,11 @@ import tkinter as tk
 from scapy.all import sniff, IP, TCP, UDP
 import threading
 
-//variables 
+#variables 
 sniffing = False
 paused = False
 
-//function for sniffing ports
+#function for sniffing ports
 def print_summary(pkt):
     if not paused:
         if IP in pkt:
@@ -30,7 +30,7 @@ def sniff_packets():
     sniff(prn=print_summary, store=False, stop_filter=lambda _: not sniffing)
 
 
-//funcstion for starting the scan
+#funcstion for starting the scan
 def start():
     global sniffing
     if not sniffing:
@@ -39,7 +39,7 @@ def start():
         statuslabel.config(text="Status: Sniffing...")
 
 
-//function for pausing or resuming the scan
+#function for pausing or resuming the scan
 def pause():
     global paused
     paused = not paused
@@ -50,7 +50,7 @@ def pause():
         statuslabel.config(text="Status: Sniffing...")
         pause_button.config(text="Pause Sniffing")
       
-//function for stopping the scan
+#function for stopping the scan
 def stop():
     global sniffing, paused
     sniffing = False
@@ -59,7 +59,7 @@ def stop():
     pause_button.config(text="Pause Sniffing")
 
 
-//GUI based window -Tkinter
+#GUI based window -Tkinter
 root = tk.Tk()
 root.title("Packet Sniffer")
 root.geometry("600x400")
